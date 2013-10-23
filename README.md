@@ -1,6 +1,6 @@
 # grunt-tmod
 
-> the grunt plugin for tmodjs
+> the grunt plugin for [tmodjs](https://github.com/aui/tmodjs)
 
 ## Getting Started
 This plugin requires Grunt `~0.4.1`
