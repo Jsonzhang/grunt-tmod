@@ -1,0 +1,50 @@
+{
+  "name": "grunt-tmod",
+  "description": "the grunt plugin for tmodjs",
+  "version": "0.1.2",
+  "homepage": "https://github.com/jsonzhang/grunt-tmodjs",
+  "author": {
+    "name": "Json",
+    "email": "enjoy.doing.19@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jsonzhang/grunt-tmodjs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jsonzhang/grunt-tmodjs/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/jsonzhang/grunt-tmodjs/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "Gruntfile.js",
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "dependencies": {
+    "async": "~0.2.9",
+    "tmodjs": "~0.0.1",
+    "uglify-js": "~2.4.1"
+  },
+  "devDependencies": {
+    "grunt-contrib-jshint": "~0.6.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-nodeunit": "~0.2.0",
+    "grunt": "~0.4.1"
+  },
+  "peerDependencies": {
+    "grunt": "~0.4.1"
+  },
+  "keywords": [
+    "gruntplugin",
+    "tmod",
+    "seajs",
+    "requirejs"
+  ]
+}
