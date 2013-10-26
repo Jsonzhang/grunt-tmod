@@ -1,6 +1,6 @@
 # grunt-tmod
 
-> [tmodjs](https://github.com/aui/tmodjs) 的grunt自动化插件
+>  前端模块工具 [tmodjs](https://github.com/aui/tmodjs) 的grunt自动化插件
 
 ## Getting Started
 需要环境: Grunt `~0.4.1`
@@ -23,7 +23,7 @@ grunt.loadNpmTasks('grunt-tmod');
 ```
 
 
-### Overview
+### 概览
 在你项目里面的gruntfile里面,在 `grunt.initConfig()` 里面加上相应的执行参数
 
 ```js
@@ -39,24 +39,7 @@ grunt.initConfig({
 })
 ```
 
-### Options
-
-#### options.separator
-Type: `String`
-Default value: `',  '`
-
-A string value that is used to do something with whatever.
-
-#### options.punctuation
-Type: `String`
-Default value: `'.'`
-
-A string value that is used to do something else with whatever else.
-
-### Usage Examples
-
-#### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
+### 使用范例
 
 ```js
 grunt.initConfig({
@@ -69,8 +52,7 @@ grunt.initConfig({
 })
 ```
 
-#### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+#### 配置示例
 
 ```js
 grunt.initConfig({
