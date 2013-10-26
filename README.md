@@ -29,26 +29,8 @@ grunt.loadNpmTasks('grunt-tmod');
 ```js
 grunt.initConfig({
   tmod: {
-    options: {
-      // Task-specific options go here.
-    },
-    your_target: {
-      // Target-specific file lists and/or options go here.
-    },
-  },
-})
-```
-
-### 使用范例
-
-```js
-grunt.initConfig({
-  tmod: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
+   
+  }
 })
 ```
 
@@ -57,14 +39,8 @@ grunt.initConfig({
 ```js
 grunt.initConfig({
   tmod: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
+    
+  }
 })
 ```
 
