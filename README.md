@@ -1,26 +1,30 @@
 # grunt-tmod
 
-> the grunt plugin for [tmodjs](https://github.com/aui/tmodjs)
+> [tmodjs](https://github.com/aui/tmodjs) 的grunt自动化插件
 
 ## Getting Started
-This plugin requires Grunt `~0.4.1`
+需要环境: Grunt `~0.4.1`
 
-If you haven't used [Grunt](http://gruntjs.com/) before, be sure to check out the [Getting Started](http://gruntjs.com/getting-started) guide, as it explains how to create a [Gruntfile](http://gruntjs.com/sample-gruntfile) as well as install and use Grunt plugins. Once you're familiar with that process, you may install this plugin with this command:
+如果你没有用过 [Grunt](http://gruntjs.com/) , 可以先看一下 [新手入门](http://gruntjs.com/getting-started) 指南, 里面有讲解怎么创建一个 [Gruntfile](http://gruntjs.com/sample-gruntfile) 和如何使用grunt插件. 
+
+顺路推荐 : [中文版的grunt社区](http://www.gruntjs.org/article/home.html)
+
+
+安装插件:
 
 ```shell
 npm install grunt-tmod --save-dev
 ```
 
-Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+安装完插件后要在gruntfile里面加上这句代码,载入这个插件:
 
 ```js
 grunt.loadNpmTasks('grunt-tmod');
 ```
 
-## The "tmod" task
 
 ### Overview
-In your project's Gruntfile, add a section named `tmod` to the data object passed into `grunt.initConfig()`.
+在你项目里面的gruntfile里面,在 `grunt.initConfig()` 里面加上相应的执行参数
 
 ```js
 grunt.initConfig({
