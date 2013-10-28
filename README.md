@@ -24,7 +24,6 @@ grunt.loadNpmTasks('grunt-tmod');
 
 
 ### 概览
-在你项目里面的gruntfile里面,在 `grunt.initConfig()` 里面加上相应的执行参数
 
 
 
