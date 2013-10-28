@@ -36,14 +36,6 @@ grunt.initConfig({
 
 #### 配置示例
 
-```js
-grunt.initConfig({
-  tmod: {
-    
-  }
-})
-```
-
 
 
 ## Release History
