@@ -28,6 +28,8 @@ grunt.loadNpmTasks('grunt-tmod');
 
 其他参数和tmodjs的设置一样,只要对应在Gruntfile中进行对应的配置即可.
 
+具体各个参数的意义及默认值请参考 [tmodjs](https://github.com/aui/tmodjs) 
+
 
 #### 配置示例
 
@@ -64,4 +66,5 @@ module.exports = function(grunt){
 ## Release History
 
 v 0.0.1 第一个版本  13-10-23
+
 v 0.0.2 加上参数功能  13-11-10
