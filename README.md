@@ -29,7 +29,39 @@ grunt.loadNpmTasks('grunt-tmod');
 
 #### 配置示例
 
+```
+	"use strict";
 
+	module.exports = function(grunt){
+
+	    // 项目配置
+	    grunt.initConfig({
+	        pkg: grunt.file.readJSON('package.json'),
+	        tmod: {
+	            files: {
+	                // expand: true,
+	                // cwd: 'images/',
+	                src: 'test/tpl',
+	                dest: '../output/'
+	            },
+	            options: {
+	                watch: true,
+	                debug : true,
+	                charset : "utf-8",
+	                type: "templatejs"
+	            }
+	        }
+	    });
+
+	    // // 加载提供"uglify"任务的插件
+	    // grunt.loadNpmTasks('grunt-contrib-concat');
+	    grunt.loadNpmTasks('grunt-tmod');
+
+	    grunt.registerTask('default', ['tmod']);
+
+	};
+
+```
 
 ## Release History
 
