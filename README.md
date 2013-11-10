@@ -23,43 +23,45 @@ grunt.loadNpmTasks('grunt-tmod');
 ```
 
 
-### 概览
+### 说明
+原tmodjs有配备的watch功能,在grunt中统一使用watch插件来实现,所以取消了grunt-tmodjs中的watch参数.
 
+其他参数和tmodjs的设置一样,只要对应在Gruntfile中进行对应的配置即可.
 
 
 #### 配置示例
 
 ```
-	"use strict";
+"use strict";
 
-	module.exports = function(grunt){
+module.exports = function(grunt){
 
-	    // 项目配置
-	    grunt.initConfig({
-	        pkg: grunt.file.readJSON('package.json'),
-	        tmod: {
-	            files: {
-	                // expand: true,
-	                // cwd: 'images/',
-	                src: 'test/tpl',
-	                dest: '../output/'
-	            },
-	            options: {
-	                watch: true,
-	                debug : true,
-	                charset : "utf-8",
-	                type: "templatejs"
-	            }
-	        }
-	    });
+    // 项目配置
+    grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+        tmod: {
+            files: {
+                // expand: true,
+                // cwd: 'images/',
+                src: 'test/tpl',
+                dest: '../output/'
+            },
+            options: {
+                watch: true,
+                debug : true,
+                charset : "utf-8",
+                type: "templatejs"
+            }
+        }
+    });
 
-	    // // 加载提供"uglify"任务的插件
-	    // grunt.loadNpmTasks('grunt-contrib-concat');
-	    grunt.loadNpmTasks('grunt-tmod');
+    // // 加载提供"uglify"任务的插件
+    // grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-tmod');
 
-	    grunt.registerTask('default', ['tmod']);
+    grunt.registerTask('default', ['tmod']);
 
-	};
+};
 
 ```
 
