@@ -21,15 +21,17 @@ module.exports = function(grunt) {
 
 		var options = {
 		    output: this.data.dest || './build',
-		    charset: 'utf-8',
-		    debug: false // 此字段不会保存在配置中
+		    charset: this.options().charset || 'utf-8',
+		    debug: this.options().debug||false ,// 此字段不会保存在配置中
+		    watch: this.options().watch || false,
+		    type : this.options().type || "templatejs"
 		};
 		var file = this.data.file;
 
 
 		TmodJS.init(path.resolve(this.data.src), options);
     	TmodJS.compile(file, false);
-    	TmodJS.watch();
+    	//TmodJS.watch();
     	TmodJS.saveUserConfig();
 	});
 };

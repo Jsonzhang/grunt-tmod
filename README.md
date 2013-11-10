@@ -41,8 +41,6 @@ module.exports = function(grunt){
         pkg: grunt.file.readJSON('package.json'),
         tmod: {
             files: {
-                // expand: true,
-                // cwd: 'images/',
                 src: 'test/tpl',
                 dest: '../output/'
             },
@@ -55,8 +53,6 @@ module.exports = function(grunt){
         }
     });
 
-    // // 加载提供"uglify"任务的插件
-    // grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-tmod');
 
     grunt.registerTask('default', ['tmod']);
@@ -68,3 +64,4 @@ module.exports = function(grunt){
 ## Release History
 
 v 0.0.1 第一个版本  13-10-23
+v 0.0.2 加上参数功能  13-11-10
