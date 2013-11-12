@@ -28,6 +28,10 @@ grunt.loadNpmTasks('grunt-tmod');
 
 其他参数和tmodjs的设置一样,只要对应在Gruntfile中进行对应的配置即可.
 
+`debug` 默认为 `true`
+`charset` 默认为 `utf-8`
+`type` 默认为 `templatejs`
+
 具体各个参数的意义及默认值请参考 [tmodjs](https://github.com/aui/tmodjs) 
 
 
@@ -47,7 +51,6 @@ module.exports = function(grunt){
                 dest: '../output/'
             },
             options: {
-                watch: true,
                 debug : true,
                 charset : "utf-8",
                 type: "templatejs"
