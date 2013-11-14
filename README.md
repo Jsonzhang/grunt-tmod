@@ -68,6 +68,58 @@ module.exports = function(grunt){
 
 ```
 
+
+
+#### 多任务配置示例
+
+```
+"use strict";
+
+module.exports = function(grunt){
+
+    // 项目配置
+    grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+        tmod: {
+            task1 : {
+                files: [{
+                    src: 'test/tpl',
+                    dest: '../output/'
+                }],
+                options: {
+                    debug : false,
+                    charset : "utf-8",
+                    type: "templatejs"
+                }
+            },
+            task2: {
+                files: [{
+                    src: 'test/tpl',
+                    dest: '../output/'
+                },{
+                    src: 'test/tpl2',
+                    dest: '../output/'
+                }],
+                options: {
+                    debug : true,
+                    charset : "utf-8",
+                    type: "templatejs"
+                }
+            }
+        }
+    });
+
+
+    grunt.loadNpmTasks('grunt-tmod');
+
+    grunt.registerTask('default', ['tmod:task1']);
+
+};
+
+```
+
+
+
 ## Release History
 
 v 0.1.5 修复不支持多任务的bug 13-11-14
