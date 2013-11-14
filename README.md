@@ -24,6 +24,13 @@ grunt.loadNpmTasks('grunt-tmod');
 
 
 ### 说明
+
+
+`files` 中的 `src` 为模版路径
+
+`files` 中的 `dest` 为输出路径
+
+
 原tmodjs有配备的watch功能,在grunt中统一使用watch插件来实现,所以取消了grunt-tmodjs中的watch参数.
 
 其他参数和tmodjs的设置一样,只要对应在Gruntfile中进行对应的配置即可.
