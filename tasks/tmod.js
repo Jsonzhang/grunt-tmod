@@ -15,6 +15,7 @@ module.exports = function(grunt) {
   // Please see the Grunt documentation for more information regarding task
   // creation: http://gruntjs.com/creating-tasks
   	var path = require('path');
+
 	grunt.registerMultiTask('tmod', 'the grunt plugin for tmodjs', function() {
 	    // Merge task-specific and/or target-specific options with these defaults.
 	    
@@ -29,9 +30,20 @@ module.exports = function(grunt) {
 		var file = this.data.file;
 
 
-		TmodJS.init(path.resolve(this.data.src), options);
-    	TmodJS.compile(file, false);
-    	//TmodJS.watch();
-    	TmodJS.saveUserConfig();
+		var src;
+		this.files.forEach(function(f){
+			if(!f.src[0]){
+				grunt.fail.warn("src is not be found");
+			}
+			var src = f.src.forEach(function(filepath){
+				TmodJS.init(path.resolve(filepath), options);
+		    	TmodJS.compile(file, false);
+		    	//TmodJS.watch();
+		    	TmodJS.saveUserConfig();
+			})
+			
+		});
+
+		
 	});
 };

@@ -70,6 +70,8 @@ module.exports = function(grunt){
 
 ## Release History
 
+v 0.1.5 修复不支持多任务的bug 13-11-14
+
 v 0.1.4 去除掉打包的tmodjs改为依赖,将内置tmod依赖改为0.0.2版本 13-11-11
 
 v 0.1.3 第二个版本,配合npm修改版本号,加上参数识别功能  13-11-10
