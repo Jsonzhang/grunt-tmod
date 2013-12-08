@@ -31,7 +31,7 @@ grunt.loadNpmTasks('grunt-tmod');
 `files` 中的 `dest` 为输出路径
 
 
-原tmodjs有配备的watch功能,在grunt中统一使用[watch插件](https://github.com/gruntjs/grunt-contrib-watch)来实现,所以取消了grunt-tmodjs中的watch参数.具体设置方法可以参照[示例](#watchExample),也可以参考[grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch)官网.
+原tmodjs有配备的watch功能,在grunt中统一使用[watch插件](https://github.com/gruntjs/grunt-contrib-watch)来实现,所以取消了grunt-tmodjs中的watch参数.具体设置方法可以参照下面带watch的配置示例,也可以参考[grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch)官网的说明.
 
 
 
@@ -58,13 +58,13 @@ module.exports = function(grunt){
         pkg: grunt.file.readJSON('package.json'),
         tmod: {
             files: {
-                src: 'test/tpl',
-                dest: '../output/'
+                src: 'test/tpl'
             },
             options: {
                 debug : false,
                 charset : "utf-8",
                 type: "templatejs"
+                dest: './output/'
             }
         }
     });
@@ -93,7 +93,7 @@ module.exports = function(grunt){
             task1 : {
                 files: [{
                     src: 'test/tpl',
-                    dest: '../output/'
+                    dest: './output/'
                 }],
                 options: {
                     debug : false,
@@ -104,10 +104,8 @@ module.exports = function(grunt){
             task2: {
                 files: [{
                     src: 'test/tpl',
-                    dest: '../output/'
                 },{
                     src: 'test/tpl2',
-                    dest: '../output/'
                 }],
                 options: {
                     debug : true,
@@ -127,6 +125,8 @@ module.exports = function(grunt){
 
 ```
 
+注意,dest路径是相对于src而言,如上代码设置,最后的dest目录将在 `test/tpl` 下生成.
+
 ####<span name="watchExample">带watch插件配置示例(注意要先安装watch插件)</span>
 
 ```shell
@@ -144,7 +144,7 @@ module.exports = function(grunt){
         tmod: {
             files: {
                 src: 'test/tpl',
-                dest: '../output/'
+                dest: './output/'
             },
             options: {
                 debug : false,
@@ -172,6 +172,9 @@ module.exports = function(grunt){
 ```
 
 ## Release History
+
+v 0.1.6 修复dest的路径问题 , 原本`dest`属性是放在files属性里 , 0.1.6版本后建议将 `dest` 属性放在 `option` 中, 如本篇 readMe 的代码所示. 
+如果有多个模版文件目录需要配置,建议使用多个任务的方式来配置,不建议在`src`中放入路径数组.  13-12-08
 
 v 0.1.5 修复不支持多任务的bug 13-11-14
 

@@ -18,10 +18,8 @@ module.exports = function(grunt) {
 
 	grunt.registerMultiTask('tmod', 'the grunt plugin for tmodjs', function() {
 	    // Merge task-specific and/or target-specific options with these defaults.
-	    
-
 		var options = {
-		    output: this.data.dest || './build',
+		    output: this.options().dest || this.data.files[0].dest || './build',
 		    charset: this.options().charset || 'utf-8',
 		    debug: this.options().debug||false ,// 此字段不会保存在配置中
 		    watch: this.options().watch || false,
