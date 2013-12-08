@@ -92,25 +92,24 @@ module.exports = function(grunt){
         tmod: {
             task1 : {
                 files: [{
-                    src: 'test/tpl',
-                    dest: './output/'
+                    src: 'test/tpl'
                 }],
                 options: {
                     debug : false,
                     charset : "utf-8",
-                    type: "templatejs"
+                    type: "templatejs",
+                    dest: './output/'
                 }
             },
             task2: {
                 files: [{
-                    src: 'test/tpl',
-                },{
-                    src: 'test/tpl2',
+                    src: 'test/tpl2'
                 }],
                 options: {
                     debug : true,
                     charset : "utf-8",
-                    type: "templatejs"
+                    type: "templatejs",
+                    dest: './output/'
                 }
             }
         }
@@ -143,13 +142,13 @@ module.exports = function(grunt){
         pkg: grunt.file.readJSON('package.json'),
         tmod: {
             files: {
-                src: 'test/tpl',
-                dest: './output/'
+                src: 'test/tpl'
             },
             options: {
                 debug : false,
                 charset : "utf-8",
                 type: "templatejs"
+                dest: './output/'
             }
         },
         watch: {
