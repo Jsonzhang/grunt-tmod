@@ -31,7 +31,9 @@ grunt.loadNpmTasks('grunt-tmod');
 `files` 中的 `dest` 为输出路径
 
 
-原tmodjs有配备的watch功能,在grunt中统一使用watch插件来实现,所以取消了grunt-tmodjs中的watch参数.
+原tmodjs有配备的watch功能,在grunt中统一使用[watch插件](https://github.com/gruntjs/grunt-contrib-watch)来实现,所以取消了grunt-tmodjs中的watch参数.
+
+
 
 其他参数和tmodjs的设置一样,只要对应在Gruntfile中进行对应的配置即可.
 
@@ -125,7 +127,53 @@ module.exports = function(grunt){
 
 ```
 
+####带watch插件配置示例(注意要先安装watch插件)
 
+```shell
+
+npm install grunt-contrib-watch --save-dev
+
+```
+
+```
+"use strict";
+
+module.exports = function(grunt){
+
+    // 项目配置
+    grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+        tmod: {
+            files: {
+                src: 'test/tpl',
+                dest: '../output/'
+            },
+            options: {
+                debug : false,
+                charset : "utf-8",
+                type: "templatejs"
+            }
+        },
+        watch: {
+            scripts: {
+                files: ['**/*.js'],
+                tasks: ['tmod'],
+                options: {
+                  spawn: false,
+                }
+            }
+        }
+    });
+
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-tmod');
+
+    grunt.registerTask('default', ['tmod','watch']);
+    grunt.registerTask('dest', ['tmod']);
+
+};
+
+```
 
 ## Release History
 
