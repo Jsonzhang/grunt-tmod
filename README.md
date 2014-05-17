@@ -1,6 +1,6 @@
 # grunt-tmod
 
->  前端模块工具 [tmodjs](https://github.com/aui/tmodjs) 的grunt自动化插件
+前端模板预编译工具 [tmodjs](https://github.com/aui/tmodjs) 的grunt自动化插件。
 
 ## Getting Started
 需要环境: Grunt `~0.4.1`
@@ -22,52 +22,72 @@ npm install grunt-tmod --save-dev
 grunt.loadNpmTasks('grunt-tmod');
 ```
 
-
-### 说明
-
-
-`files` 中的 `src` 为模版路径
-
-`files` 中的 `dest` 为输出路径
+### 设置
 
 
-原tmodjs有配备的watch功能,在grunt中统一使用[watch插件](https://github.com/gruntjs/grunt-contrib-watch)来实现,所以取消了grunt-tmodjs中的watch参数.具体设置方法可以参照下面带watch的配置示例,也可以参考[grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch)官网的说明.
+##	src
 
+*	类型：`String` | `Array`
 
+模版文件
 
-其他参数和tmodjs的设置一样,只要对应在Gruntfile中进行对应的配置即可.
+##	dest
 
-`debug` 默认为 `false`
+*	类型：`String`
 
-`charset` 默认为 `utf-8`
+输出路径。
 
-`type` 默认为 `templatejs`
+##	options
 
-具体各个参数的意义及默认值请参考 [tmodjs](https://github.com/aui/tmodjs) 
+支持[tmodjs的配置](https://github.com/aui/tmodjs#配置)，还新增如下字段：
 
+####	options.base
 
-#### 配置示例
+*	类型：`String`
+
+指定模板的根目录，以便缩短编译后的模板id访问路径。
+
+示例：
 
 ```
-"use strict";
+tmod: {
+    template: {
+        src: './tpl/src/**/*.html',
+        dest: './dist/template.js',
+        options: {
+            base: './tpl/src'
+        } 
+    }
+}
+```
 
+以某个模板为例，默认情况调用模板的路径将可能会很长：
+
+	template('./tpl/src/home/main', data)
+	
+使用`base`后可以省略模板目录调用模板
+
+	template('home/main', data)
+
+##	示例
+
+###	基本
+
+```
 module.exports = function(grunt){
 
-    // 项目配置
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
         tmod: {
-            files: {
-                src: 'test/tpl'
-            },
-            options: {
-                debug : false,
-                charset : "utf-8",
-                type: "templatejs"
-                dest: './output/'
+            template: {
+                src: './tpl/**/*.html',
+                dest: './dist/template.js',
+                options: {
+                    combo: true
+                } 
             }
         }
     });
+
 
     grunt.loadNpmTasks('grunt-tmod');
 
@@ -77,100 +97,59 @@ module.exports = function(grunt){
 
 ```
 
+###	监控模板修改即时编译
 
+> 原tmodjs有配备的watch功能,在grunt中统一使用[watch插件](https://github.com/gruntjs/grunt-contrib-watch)来实现,所以取消了grunt-tmodjs中的watch参数.具体设置方法可以参照下面带watch的配置示例,也可以参考[grunt-contrib-watch](https://github.com/gruntjs/grunt-contrib-watch)官网的说明.
 
-#### 多任务配置示例
-
-```
-"use strict";
-
-module.exports = function(grunt){
-
-    // 项目配置
-    grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
-        tmod: {
-            task1 : {
-                files: [{
-                    src: 'test/tpl'
-                }],
-                options: {
-                    debug : false,
-                    charset : "utf-8",
-                    type: "templatejs",
-                    dest: './output/'
-                }
-            },
-            task2: {
-                files: [{
-                    src: 'test/tpl2'
-                }],
-                options: {
-                    debug : true,
-                    charset : "utf-8",
-                    type: "templatejs",
-                    dest: './output/'
-                }
-            }
-        }
-    });
-
-
-    grunt.loadNpmTasks('grunt-tmod');
-
-    grunt.registerTask('default', ['tmod:task1']);
-
-};
-
-```
-
-注意,dest路径是相对于src而言,如上代码设置,最后的dest目录将在 `test/tpl` 下生成.
-
-####<span name="watchExample">带watch插件配置示例(注意要先安装watch插件)</span>
+先安装watch插件
 
 ```shell
 npm install grunt-contrib-watch --save-dev
 ```
 
 ```
-"use strict";
-
 module.exports = function(grunt){
 
-    // 项目配置
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
         tmod: {
-            files: {
-                src: 'test/tpl'
-            },
-            options: {
-                debug : false,
-                charset : "utf-8",
-                type: "templatejs"
-                dest: './output/'
+            template: {
+                src: './tpl/**/*.html',
+                dest: './dist/template.js',
+                options: {
+                    combo: true
+                } 
             }
         },
         watch: {
-            scripts: {
-                files: ['test/tpl/*.*'],
+            template: {
+                files: '<%=tmod.template.src%>',
                 tasks: ['tmod'],
-                options: {}
+                options: {
+                    spawn: false
+                }
             }
         }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-tmod');
 
-    grunt.registerTask('default', ['tmod','watch']);
-    grunt.registerTask('dest', ['tmod']);
+    grunt.loadNpmTasks('grunt-tmod');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+
+    grunt.registerTask('default', ['tmod', 'watch']);
 
 };
 
 ```
 
+###	使用调试模式编译
+
+运行grunt任务的时候加上`--debug`参数即可：
+
+	grunt --debug
+
 ## Release History
+
+v 0.2.0 遵循标准的 grunt 路径配置规范，同时支持编译错误显示。注意：不兼容历史版本 14-04-30
 
 v 0.1.6 修复dest的路径问题 , 原本`dest`属性是放在files属性里 , 0.1.6版本后建议将 `dest` 属性放在 `option` 中, 如本篇 readMe 的代码所示. 
 如果有多个模版文件目录需要配置,建议使用多个任务的方式来配置,不建议在`src`中放入路径数组.  13-12-08
