@@ -20,7 +20,7 @@ module.exports = function(grunt) {
 		var done = function () {};
 		var options = this.options();
 		var dest = this.files[0].dest;
-        var base = path.resolve(options.base || './');
+        var base = path.resolve(options.base || './node_modules/grunt-tmod/' || './');
 
         options.debug = grunt.option('debug');
         options.cache = grunt.option('cache');
