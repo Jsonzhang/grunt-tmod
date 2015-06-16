@@ -1,8 +1,8 @@
 {
   "name": "grunt-tmod",
   "description": "the grunt plugin for tmodjs",
-  "version": "0.2.7",
-  "homepage": "https://github.com/jsonzhang/grunt-tmodjs",
+  "version": "0.2.8",
+  "homepage": "https://github.com/jsonzhang/grunt-tmod",
   "author": {
     "name": "Json",
     "email": "enjoy.doing.19@gmail.com"
