@@ -141,12 +141,6 @@ module.exports = function(grunt){
 
 ```
 
-###	使用调试模式编译
-
-运行grunt任务的时候加上`--debug`参数即可：
-
-	grunt --debug
-
 ## Release History
 
 v 0.2.0 遵循标准的 grunt 路径配置规范，同时支持编译错误显示。注意：不兼容历史版本 14-04-30
