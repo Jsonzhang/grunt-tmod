@@ -20,6 +20,7 @@ module.exports = function(grunt) {
 		var done = function () {};
 		var options = this.options();
 		var dest = this.files[0].dest;
+        // var base = path.resolve(options.base || './node_modules/grunt-tmod/' || './');
         var base = path.resolve(options.base || './');
 
         options.debug = grunt.option('debug');
@@ -64,9 +65,7 @@ module.exports = function(grunt) {
 
 
 		this.files.forEach(function (f) {
-
 			var fileList = f.src.filter(function (filepath) {
-
 	            if (!grunt.file.exists(filepath)) {
 	                grunt.log.warn('Source file "' + filepath + '" not found.');
 	                return false;

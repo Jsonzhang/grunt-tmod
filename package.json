@@ -1,23 +1,23 @@
 {
   "name": "grunt-tmod",
   "description": "the grunt plugin for tmodjs",
-  "version": "0.2.0",
-  "homepage": "https://github.com/jsonzhang/grunt-tmodjs",
+  "version": "0.2.10",
+  "homepage": "https://github.com/Jsonzhang/grunt-tmod",
   "author": {
     "name": "Json",
     "email": "enjoy.doing.19@gmail.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/jsonzhang/grunt-tmodjs.git"
+    "url": "git://github.com/Jsonzhang/grunt-tmod.git"
   },
   "bugs": {
-    "url": "https://github.com/jsonzhang/grunt-tmodjs/issues"
+    "url": "https://github.com/Jsonzhang/grunt-tmod/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/jsonzhang/grunt-tmodjs/blob/master/LICENSE-MIT"
+      "url": "https://github.com/Jsonzhang/grunt-tmod/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",
