@@ -14,13 +14,12 @@ var TmodJS = require("tmodjs");
 
 module.exports = function(grunt) {
 
-	grunt.registerMultiTask('tmod', 'the grunt plugin for tmodjs', function() {
+    grunt.registerMultiTask('tmod', 'the grunt plugin for tmodjs', function() {
 
-		var that = this;
-		var done = function () {};
-		var options = this.options();
-		var dest = this.files[0].dest;
-        // var base = path.resolve(options.base || './node_modules/grunt-tmod/' || './');
+        var that = this;
+        var done = function () {};
+        var options = this.options();
+        var dest = this.files[0].dest;
         var base = path.resolve(options.base || './');
 
         options.debug = grunt.option('debug');
@@ -30,57 +29,57 @@ module.exports = function(grunt) {
             options.runtime = path.basename(dest);
             options.output = path.dirname(dest);
         } else {
-        	options.output = dest;
+            options.output = dest;
         }
 
-		if (!fs.existsSync(base)) {
-		    grunt.fail.warn('`options.base` is not a directory');
-		}
-        
+        if (!fs.existsSync(base)) {
+            grunt.fail.warn('`options.base` is not a directory');
+        }
+
 
         var tmod = new TmodJS(base, options);
-        
+
 
         tmod.on('compile', function (error, data) {
-        	if (error) {
-        		done = that.async();
-				var err = new Error('Compile error.');
-				err.origError = error;
-				grunt.fail.warn(err);
-        	}
+            if (error) {
+                done = that.async();
+                var err = new Error('Compile error.');
+                err.origError = error;
+                grunt.fail.warn(err);
+            }
         });
 
 
         tmod.on('combo', function (error, data) {
-        	if (!error) {
-        		var comboFile = path.relative('./', data.outputFile);
-        		grunt.log.writeln('File "' + comboFile + '" created.');
-        	}
+            if (!error) {
+                var comboFile = path.relative('./', data.outputFile);
+                grunt.log.writeln('File "' + comboFile + '" created.');
+            }
         });
 
 
         tmod.on('debug', function (error) {
-        	done();
+            done();
         });
 
 
-		this.files.forEach(function (f) {
-			var fileList = f.src.filter(function (filepath) {
-	            if (!grunt.file.exists(filepath)) {
-	                grunt.log.warn('Source file "' + filepath + '" not found.');
-	                return false;
-	            } else {
-	                return true;
-	            }
+        this.files.forEach(function (f) {
+            var fileList = f.src.filter(function (filepath) {
+                if (!grunt.file.exists(filepath)) {
+                    grunt.log.warn('Source file "' + filepath + '" not found.');
+                    return false;
+                } else {
+                    return true;
+                }
 
-	        }).map(function (filepath) {
-	        	return path.relative(base, filepath);
-	        });
-	        
+            }).map(function (filepath) {
+                return path.relative(base, filepath);
+            });
 
-	        tmod.compile(fileList);
-		});
 
-		
-	});
+            tmod.compile(fileList);
+        });
+
+
+    });
 };
